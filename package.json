@@ -1,0 +1,26 @@
+{
+	"name": "@delagen/cadesplugin",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "tsc && tsc --declarationDir ./build && webpack --mode production",
+		"start": "webpack-dev-server",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Delagen <delagen@gmail.com> (https://delagen.blogspot.com/)",
+	"license": "ISC",
+	"repository": "https://github.com/Delagen/cadesplugin.git",
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org"
+	},
+	"devDependencies": {
+		"core-js": "~2.6.2",
+		"ts-loader": "~5.3.3",
+		"typescript": "~3.2.2",
+		"url-search-params-polyfill": "~5.0.0",
+		"webpack": "~4.28.4",
+		"webpack-cli": "~3.2.1",
+		"webpack-dev-server": "~3.1.14"
+	}
+}

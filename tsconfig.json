@@ -1,0 +1,47 @@
+{
+	"exclude": [
+		"build",
+		"node_modules"
+	],
+	"compilerOptions": {
+		"module": "es2015",
+		"target": "es5",
+		"moduleResolution": "node",
+		"lib": [
+			"dom",
+			"es2017"
+		],
+		"declaration": true,
+		"declarationDir": "./build",
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": false,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": false,
+		"inlineSources": true,
+		"emitBOM": false,
+		"newLine": "lf",
+		"noEmit": false,
+		"noEmitOnError": true,
+		"noEmitHelpers": false,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noImplicitUseStrict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": false,
+		"baseUrl": ".",
+		"preserveConstEnums": false,
+		"preserveSymlinks": true,
+		"pretty": true,
+		"removeComments": false,
+		"sourceMap": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictPropertyInitialization": true,
+		"stripInternal": true,
+		"types": []
+	}
+}
