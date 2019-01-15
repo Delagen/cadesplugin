@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"types": "index.d.ts",
 	"scripts": {
 		"build": "tsc && tsc --declarationDir ./build && webpack --mode production",
 		"start": "webpack-dev-server",
@@ -14,11 +15,13 @@
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
-	"devDependencies": {
+	"dependencies": {
 		"core-js": "~2.6.2",
+		"url-search-params-polyfill": "~5.0.0"
+	},
+	"devDependencies": {
 		"ts-loader": "~5.3.3",
 		"typescript": "~3.2.2",
-		"url-search-params-polyfill": "~5.0.0",
 		"webpack": "~4.28.4",
 		"webpack-cli": "~3.2.1",
 		"webpack-dev-server": "~3.1.14"

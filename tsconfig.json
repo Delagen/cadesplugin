@@ -12,7 +12,6 @@
 			"es2017"
 		],
 		"declaration": true,
-		"declarationDir": "./build",
 		"downlevelIteration": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": false,
