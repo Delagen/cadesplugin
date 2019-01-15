@@ -19,6 +19,19 @@
 		"core-js": "~2.6.2",
 		"url-search-params-polyfill": "~5.0.0"
 	},
+	"keywords": [
+		"cadesplugin",
+		"cadesplugin-api",
+		"cadesplugin-crypto-pro-api",
+		"cryptopro",
+		"crypto-pro",
+		"Крипто Про",
+		"криптоПро",
+		"cades",
+		"ЭЦП",
+		"Электронная подпись",
+		"Электронная цифровая подпись",
+	],
 	"devDependencies": {
 		"ts-loader": "~5.3.3",
 		"typescript": "~3.2.2",
