@@ -52,7 +52,7 @@ export interface ICertificate {
 }
 
 export interface ICertificateStatus {
-	// TODO
+	Result: boolean;
 }
 
 export interface ICertificates {
@@ -65,7 +65,7 @@ export interface ICertificates {
 	Select(title?: string, displayString?: string, bMultiSelect?: boolean): ICertificates;
 }
 
-export interface Store {
+export interface IStore {
 	readonly Certificates: ICertificates;
 	readonly Location: CAPICOM_STORE_LOCATION;
 	readonly Name: string;
@@ -79,16 +79,14 @@ export interface Store {
 	Import(encodedStore: string): void;
 }
 
-export interface Signers {
+export interface ISigners {
 	readonly Count: number;
 
-	Item(index: number): Signer;
+	Item(index: number): ISigner;
 }
 
-export interface Signer {
-	//readonly AuthenticatedAttributes
+export interface ISigner {
 	Certificate: ICertificate;
-	//Chain
 	Options: CAPICOM_CERTIFICATE_INCLUDE_OPTION;
 
 	Load(fileName: string, password?: string): void;

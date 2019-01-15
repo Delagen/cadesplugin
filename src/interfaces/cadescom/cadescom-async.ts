@@ -6,15 +6,15 @@ import {
 } from "../capicom";
 import { Async } from "../util";
 import {
-	About,
-	CadesSignedData,
-	CPAttribute,
-	CPHashedData,
-	CPSigner,
-	CPSigners,
-	RawSignature,
-	SignedXML,
-	Version
+	IAbout,
+	ICadesSignedData,
+	ICPAttribute,
+	ICPHashedData,
+	ICPSigner,
+	ICPSigners,
+	IRawSignature,
+	ISignedXML,
+	IVersion
 } from "./cadescom";
 import {
 	CADESCOM_ATTRIBUTE,
@@ -23,19 +23,19 @@ import {
 	CADESCOM_XML_SIGNATURE_TYPE
 } from "./cadescom-enums";
 
-export interface CPSignerAsync extends Async<CPSigner> {
+export interface ICPSignerAsync extends Async<ICPSigner> {
 	propset_Certificate(certificate: ICertificateAsync): Promise<void>;
 
 	propset_CheckCertificate(checkCertificate: boolean): Promise<void>;
 
-	propset_KeyPin(keyPin: string): Promise<void>
+	propset_KeyPin(keyPin: string): Promise<void>;
 
-	propset_Options(options: CAPICOM_CERTIFICATE_INCLUDE_OPTION): Promise<void>
+	propset_Options(options: CAPICOM_CERTIFICATE_INCLUDE_OPTION): Promise<void>;
 
 	propset_TSAAddress(TSAAddress: string): Promise<void>;
 }
 
-export interface CadesSignedDataAsync extends Async<CadesSignedData> {
+export interface ICadesSignedDataAsync extends Async<ICadesSignedData> {
 	propset_DisplayData(displayData: CADESCOM_DISPLAY_DATA): Promise<void>;
 
 	propset_Content(content: string): Promise<void>;
@@ -43,16 +43,16 @@ export interface CadesSignedDataAsync extends Async<CadesSignedData> {
 	propset_ContentEncoding(contentEncoding: CADESCOM_CONTENT_ENCODING_TYPE): Promise<void>;
 }
 
-export interface VersionAsync extends Async<Version> {
+export interface IVersionAsync extends Async<IVersion> {
 }
 
-export interface AboutAsync extends Async<About> {
+export interface IAboutAsync extends Async<IAbout> {
 }
 
-export interface CPSignersAsync extends Async<CPSigners> {
+export interface ICPSignersAsync extends Async<ICPSigners> {
 }
 
-export interface SignedXMLAsync extends Async<SignedXML> {
+export interface ISignedXMLAsync extends Async<ISignedXML> {
 	propset_Content(content: string): Promise<void>;
 
 	propset_DigestMethod(digestMethod: string): Promise<void>;
@@ -62,13 +62,13 @@ export interface SignedXMLAsync extends Async<SignedXML> {
 	propset_SignatureType(signatureType: CADESCOM_XML_SIGNATURE_TYPE): Promise<void>;
 }
 
-export interface CPHashedDataAsync extends Async<CPHashedData> {
+export interface ICPHashedDataAsync extends Async<ICPHashedData> {
 	propset_Algorithm(algorithm: CAPICOM_HASH_ALGORITHM): Promise<void>;
 
 	propset_DataEncoding(dataEncoding: CADESCOM_CONTENT_ENCODING_TYPE): Promise<void>;
 }
 
-export interface CPAttributeAsync extends Async<CPAttribute> {
+export interface ICPAttributeAsync extends Async<ICPAttribute> {
 	propset_Name(name: CADESCOM_ATTRIBUTE): Promise<void>;
 
 	propset_Value(value: any): Promise<void>;
@@ -76,5 +76,5 @@ export interface CPAttributeAsync extends Async<CPAttribute> {
 	propset_ValueEncoding(valueEncoding: CAPICOM_ENCODING_TYPE): Promise<void>;
 }
 
-export interface RawSignatureAsync extends Async<RawSignature> {
+export interface IRawSignatureAsync extends Async<IRawSignature> {
 }

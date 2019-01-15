@@ -4,7 +4,8 @@ import {
 	CAPICOM_HASH_ALGORITHM,
 	ICertificate,
 	ICertificates,
-	Signers
+	IOID,
+	ISigners
 } from "../capicom";
 import { VarDate } from "../util";
 import {
@@ -15,18 +16,12 @@ import {
 	CADESCOM_XML_SIGNATURE_TYPE
 } from "./cadescom-enums";
 
-export interface CPSigner {
-	//AuthenticatedAttributes2
+export interface ICPSigner {
 	Certificate: ICertificate;
-	//Chain
 	CheckCertificate: boolean;
 
-	//AuthenticatedAttributes
-	//CRLs;
 	KeyPin: string;
-	//OCSPResponses
 	Options: CAPICOM_CERTIFICATE_INCLUDE_OPTION;
-	//SignatureStatus
 	readonly SignatureTimeStampTime: VarDate;
 	readonly SigningTime: VarDate;
 	TSAAddress: string;
@@ -34,14 +29,9 @@ export interface CPSigner {
 	Display(hwndParent?: number, title?: string): void;
 
 	Load(fileName: string, password?: string): void;
-
-	//UnauthenticatedAttributes
 }
 
-export interface CadesSignedData {
-	//VerifyHash
-	//SignHash
-
+export interface ICadesSignedData {
 	readonly Certificates: ICertificates;
 	Content: string;
 	ContentEncoding: CADESCOM_CONTENT_ENCODING_TYPE;
@@ -52,12 +42,16 @@ export interface CadesSignedData {
 
 	EnhanceCades(cadesType?: CADESCOM_CADES_TYPE, TSAAddress?: string, encodingType?: CAPICOM_ENCODING_TYPE): string;
 
-	SignCades(signer?: CPSigner, CadesType?: CADESCOM_CADES_TYPE, bDetached?: boolean, EncodingType?: CAPICOM_ENCODING_TYPE): string;
+	SignCades(signer?: ICPSigner, CadesType?: CADESCOM_CADES_TYPE, bDetached?: boolean, EncodingType?: CAPICOM_ENCODING_TYPE): string;
 
 	VerifyCades(SignedMessage: string, CadesType?: CADESCOM_CADES_TYPE, bDetached?: boolean): void;
+
+	SignHash(hashedData: ICPHashedData, signer?: ICPSigner, CadesType?: CADESCOM_CADES_TYPE, encodingType?: CAPICOM_ENCODING_TYPE): string;
+
+	VerifyHash(hashedData: ICPHashedData, message: string, CadesType?: CADESCOM_CADES_TYPE): boolean;
 }
 
-export interface Version {
+export interface IVersion {
 	readonly BuildVersion: number;
 	readonly MajorVersion: number;
 	readonly MinorVersion: number;
@@ -66,41 +60,41 @@ export interface Version {
 	toString(): string;
 }
 
-export interface About {
+export interface IAbout {
 	readonly BuildVersion: number;
 	readonly MajorVersion: number;
 	readonly MinorVersion: number;
-	readonly PluginVersion: Version;
+	readonly PluginVersion: IVersion;
 	readonly Version: string;
 
 	CSPName(ProviderType?: number): string;
 
-	CSPVersion(ProviderName?: string, ProviderType?: number): Version;
+	CSPVersion(ProviderName?: string, ProviderType?: number): IVersion;
 
 	ProviderVersion(ProviderName?: string, ProviderType?: number): string;
 
 	toString(): string;
 }
 
-export interface CPSigners {
+export interface ICPSigners {
 	readonly Count: number;
 
-	Item(index: number): CPSigner;
+	Item(index: number): ICPSigner;
 }
 
-export interface SignedXML {
+export interface ISignedXML {
 	Content: string;
 	DigestMethod: string;
 	SignatureMethod: string;
 	SignatureType: CADESCOM_XML_SIGNATURE_TYPE;
-	readonly Signers: Signers;
+	readonly Signers: ISigners;
 
-	Sign(signer?: CPSigner, XPath?: string): string;
+	Sign(signer?: ICPSigner, XPath?: string): string;
 
 	Verify(SignedMessage: string, XPath?: string): void;
 }
 
-export interface CPHashedData {
+export interface ICPHashedData {
 	Algorithm: CAPICOM_HASH_ALGORITHM;
 	DataEncoding: CADESCOM_CONTENT_ENCODING_TYPE;
 	Value: string;
@@ -110,15 +104,15 @@ export interface CPHashedData {
 	SetHashValue(newVal: string): void;
 }
 
-export interface CPAttribute {
+export interface ICPAttribute {
 	Name: CADESCOM_ATTRIBUTE;
-	//OID: IOID;
+	OID: IOID;
 	Value: any;
 	ValueEncoding: CAPICOM_ENCODING_TYPE;
 }
 
-export interface RawSignature {
-	SignHash(hash: CPHashedData, certificate?: string): string;
+export interface IRawSignature {
+	SignHash(hash: ICPHashedData, certificate?: string): string;
 
-	VerifyHash(hash: CPHashedData, certificate: ICertificate, signature: string): void;
+	VerifyHash(hash: ICPHashedData, certificate: ICertificate, signature: string): void;
 }

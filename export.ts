@@ -14,4 +14,3 @@ export {
 	LogLevel,
 	SignedXmlUrls
 } from "./src";
-

@@ -4,35 +4,35 @@ declare var InstallTrigger: any;
 export class BrowserDetector {
 	static get isIOS(): boolean {
 		return false;
-	};
+	}
 
 	static get isIE(): boolean {
-		// Internet Explorer 6-11
-		return /*@cc_on!@*/false || !!(<any> document).documentMode;
+		//note: Internet Explorer 6-11
+		return /*@cc_on!@*/false || Boolean((<any> document).documentMode); //tslint:disable-line binary-expression-operand-order
 	}
 
 	static get isEdge(): boolean {
-		// Edge 20+
+		//note: Edge 20+
 		return !BrowserDetector.isIE && !!(<any> window).StyleMedia;
 	}
 
 	static get isOpera(): boolean {
-		// Opera 8.0+
+		//note: Opera 8.0+
 		return (!!(<any> window).opr && !!(<any> window).opr.addons) || !!(<any> window).opera || navigator.userAgent.indexOf(" OPR/") >= 0;
 	}
 
 	static get isFirefox(): boolean {
-		// Firefox 1.0+
-		return typeof InstallTrigger !== "undefined";
+		//note: Firefox 1.0+
+		return typeof InstallTrigger !== "undefined"; //tslint:disable-line no-typeof-undefined
 	}
 
 	static get isSafari(): boolean {
-		// Safari 3.0+ "[object HTMLElementConstructor]"
+		//note: Safari 3.0+ "[object HTMLElementConstructor]"
 		return /constructor/i.test((<any> window).HTMLElement) || ((!(<any> window).safari || (<any> window).safari.pushNotification).toString() === "[object SafariRemoteNotification]");
 	}
 
 	static get isChrome(): boolean {
-		// Chrome 1 - 71
+		//note: Chrome 1 - 71
 		return !!(<any> window).chrome && (!!(<any> window).chrome.webstore || !!(<any> window).chrome.runtime || !!navigator.plugins.namedItem("Chrome PDF Plugin"));
 	}
 

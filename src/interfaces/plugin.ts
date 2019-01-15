@@ -1,44 +1,44 @@
 import {
-	About,
-	AboutAsync,
-	CadesSignedData,
-	CadesSignedDataAsync,
-	CPAttribute,
-	CPAttributeAsync,
-	CPHashedData,
-	CPHashedDataAsync,
-	CPSigner,
-	CPSignerAsync,
-	RawSignature,
-	RawSignatureAsync,
-	SignedXML,
-	SignedXMLAsync
+	IAbout,
+	IAboutAsync,
+	ICadesSignedData,
+	ICadesSignedDataAsync,
+	ICPAttribute,
+	ICPAttributeAsync,
+	ICPHashedData,
+	ICPHashedDataAsync,
+	ICPSigner,
+	ICPSignerAsync,
+	IRawSignature,
+	IRawSignatureAsync,
+	ISignedXML,
+	ISignedXMLAsync
 } from "./cadescom";
 import {
-	Store,
-	StoreAsync
+	IStore,
+	IStoreAsync
 } from "./capicom";
 
-export interface ObjectNames {
-	"CAdESCOM.Store": Store;
-	"CAdESCOM.CPSigner": CPSigner;
-	"CAdESCOM.About": About;
-	"CAdESCOM.SignedXML": SignedXML;
-	"CAdESCOM.HashedData": CPHashedData;
-	"CAdESCOM.CadesSignedData": CadesSignedData;
-	"CAdESCOM.CPAttribute": CPAttribute;
-	"CAdESCOM.RawSignature": RawSignature;
+export interface IObjectNamesMapSync {
+	"CAdESCOM.Store": IStore;
+	"CAdESCOM.CPSigner": ICPSigner;
+	"CAdESCOM.About": IAbout;
+	"CAdESCOM.SignedXML": ISignedXML;
+	"CAdESCOM.HashedData": ICPHashedData;
+	"CAdESCOM.CadesSignedData": ICadesSignedData;
+	"CAdESCOM.CPAttribute": ICPAttribute;
+	"CAdESCOM.RawSignature": IRawSignature;
 }
 
-export interface ObjectNamesAsync {
-	"CAdESCOM.Store": StoreAsync;
-	"CAdESCOM.CPSigner": CPSignerAsync;
-	"CAdESCOM.About": AboutAsync;
-	"CAdESCOM.SignedXML": SignedXMLAsync;
-	"CAdESCOM.HashedData": CPHashedDataAsync;
-	"CAdESCOM.CadesSignedData": CadesSignedDataAsync;
-	"CAdESCOM.CPAttribute": CPAttributeAsync;
-	"CAdESCOM.RawSignature": RawSignatureAsync;
+export interface IObjectNamesMapAsync {
+	"CAdESCOM.Store": IStoreAsync;
+	"CAdESCOM.CPSigner": ICPSignerAsync;
+	"CAdESCOM.About": IAboutAsync;
+	"CAdESCOM.SignedXML": ISignedXMLAsync;
+	"CAdESCOM.HashedData": ICPHashedDataAsync;
+	"CAdESCOM.CadesSignedData": ICadesSignedDataAsync;
+	"CAdESCOM.CPAttribute": ICPAttributeAsync;
+	"CAdESCOM.RawSignature": IRawSignatureAsync;
 }
 
 export const enum LogLevel {
@@ -60,42 +60,25 @@ export const enum IEncodingType {
 	CADESCOM_ENCODE_BINARY = 1
 }
 
-export interface CADESPluginBase<T>
-	// StoreLocationPlugin, StoreLocationPlugin, StoreNamePlugin,
-	// StoreOpenModePlugin, CAPICOM_CERTIFICATE_FIND_TYPE,
-	// LogLevel, CADESCOM_XML_SIGNATURE_TYPE,
-	// ISignedXmlUrls, CADESCOM_CADES_TYPE,
-	// IEncodingType, CAPICOM_CERTIFICATE_INCLUDE_OPTION,
-	// CertIntoTypePlugin, KeyUsagePlugin,
-	// PropIDPlugin, OIDPlugin, EKUPlugin,
-	// CAPICOM_ATTRIBUTE, CADESCOM_ATTRIBUTE,
-	// CADESCOM_CONTENT_ENCODING_TYPE, CADESCOM_DISPLAY_DATA,
-	// CADESCOM_ENCRYPTION_ALGORITHM, CADESCOM_HASH_ALGORITHM,
-	// CADESCOM_InstallResponseRestrictionFlags
-{
-
-	// readonly JSModuleVersion: string;
-	// readonly current_log_level: number;
-	//
+export interface ICADESPluginBase<T> {
+	readonly isAsync: boolean;
 	// set_log_level(level: LogLevel): void;
 	//
 	// getLastError(exception: Error): string;
 }
 
-export interface CADESPluginAsyncObject {
-	CreateObjectAsync<T extends keyof ObjectNamesAsync>(objName: T): Promise<ObjectNamesAsync[T]>;
+export interface ICADESPluginAsyncObject {
+	CreateObjectAsync<T extends keyof IObjectNamesMapAsync>(objName: T): Promise<IObjectNamesMapAsync[T]>;
 
 	ReleasePluginObjects(): Promise<boolean>;
 }
 
-export interface CADESPluginSyncObject {
-	CreateObject<T extends keyof ObjectNames>(objName: T): ObjectNames[T];
+export interface ICADESPluginSyncObject {
+	CreateObject<T extends keyof IObjectNamesMapSync>(objName: T): IObjectNamesMapSync[T];
 }
 
-export interface CADESPluginAsync<T> extends CADESPluginBase<T>, CADESPluginAsyncObject {
+export interface ICADESPluginAsync<T> extends ICADESPluginBase<T>, ICADESPluginAsyncObject {
 }
 
-export interface CADESPluginSync<T> extends CADESPluginBase<T>, CADESPluginSyncObject {
+export interface ICADESPluginSync<T> extends ICADESPluginBase<T>, ICADESPluginSyncObject {
 }
-
-export type CADESPlugin<T> = CADESPluginAsync<T> | CADESPluginSync<T>;

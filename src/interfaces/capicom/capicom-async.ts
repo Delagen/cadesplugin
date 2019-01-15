@@ -5,7 +5,7 @@ import {
 	IEncodedData,
 	IOID,
 	IPublicKey,
-	Store
+	IStore
 } from "./capicom";
 
 export interface ICertificateAsync extends Async<ICertificate> {
@@ -14,7 +14,7 @@ export interface ICertificateAsync extends Async<ICertificate> {
 export interface ICertificatesAsync extends Async<ICertificates> {
 }
 
-export interface StoreAsync extends Async<Store> {
+export interface IStoreAsync extends Async<IStore> {
 }
 
 export interface IEncodedDataAsync extends Async<IEncodedData> {

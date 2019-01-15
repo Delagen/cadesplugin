@@ -1,3 +1,4 @@
+//tslint:disable no-import-side-effect
 import "core-js/es6/promise";
 import "core-js/es6/symbol";
 import "core-js/fn/object/assign";
