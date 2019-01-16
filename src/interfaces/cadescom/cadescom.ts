@@ -7,7 +7,6 @@ import {
 	IOID,
 	ISigners
 } from "../capicom";
-import { VarDate } from "../util";
 import {
 	CADESCOM_ATTRIBUTE,
 	CADESCOM_CADES_TYPE,
@@ -22,8 +21,8 @@ export interface ICPSigner {
 
 	KeyPin: string;
 	Options: CAPICOM_CERTIFICATE_INCLUDE_OPTION;
-	readonly SignatureTimeStampTime: VarDate;
-	readonly SigningTime: VarDate;
+	readonly SignatureTimeStampTime: string;
+	readonly SigningTime: string;
 	TSAAddress: string;
 
 	Display(hwndParent?: number, title?: string): void;

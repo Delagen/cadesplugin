@@ -2,8 +2,7 @@
 	"name": "@delagen/cadesplugin",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
-	"types": "index.d.ts",
+	"main": "index",
 	"scripts": {
 		"build": "tsc && tsc --declarationDir ./build && webpack --mode production",
 		"start": "webpack-dev-server",

@@ -1,6 +1,7 @@
 declare var InstallTrigger: any;
 
-//note: https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser/9851769
+// note: https://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser/9851769
+// @dynamic
 export class BrowserDetector {
 	static get isIOS(): boolean {
 		return false;

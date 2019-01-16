@@ -1,4 +1,3 @@
-import { VarDate } from "../util";
 import {
 	CAPICOM_CERT_INFO_TYPE,
 	CAPICOM_CERTIFICATE_FIND_TYPE,
@@ -35,8 +34,8 @@ export interface ICertificate {
 	readonly SubjectName: string;
 	readonly SerialNumber: string;
 	readonly IssuerName: string;
-	readonly ValidFromDate: VarDate;
-	readonly ValidToDate: VarDate;
+	readonly ValidFromDate: string;
+	readonly ValidToDate: string;
 
 	HasPrivateKey(): boolean;
 

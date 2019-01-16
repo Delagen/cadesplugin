@@ -19,8 +19,6 @@ import {
 	IPublicKeyAsync
 } from "./capicom";
 
-export type VarDate = object;
-
 //note: extracts the type if wrapped by a Promise
 export type Unpacked<T> = T extends Promise<infer U> ? U :
 						  T extends ICertificate ? ICertificateAsync :
@@ -33,11 +31,11 @@ export type Unpacked<T> = T extends Promise<infer U> ? U :
 						  T extends IPublicKey ? IPublicKeyAsync :
 						  T;
 
-export type PromisifiedFunction<T extends () => void> =
+export type PromisifiedFunction<T extends Function> = //tslint:disable-line ban-types
 	T extends (...args: infer A) => infer U ? (...args: { [K in keyof A]: Unpacked<A[K]> }) => Promise<Unpacked<U>> :
 	T;
 
 export type Async<T> = {
-	readonly [K in keyof T]: T[K] extends () => void ? PromisifiedFunction<T[K]> :
+	readonly [K in keyof T]: T[K] extends Function ? PromisifiedFunction<T[K]> : //tslint:disable-line ban-types
 							 Promise<Unpacked<T[K]>>;
 };

@@ -9,7 +9,7 @@ export class CadesBrowserPluginLoader implements Promise<CadesBrowserPlugin> {
 	readonly LOG_LEVEL_INFO: LogLevel = LogLevel.LOG_LEVEL_INFO;
 	readonly LOG_LEVEL_ERROR: LogLevel = LogLevel.LOG_LEVEL_ERROR;
 
-	current_log_level: number = LogLevel.LOG_LEVEL_DEBUG; //tslint:disable-line variable-name
+	current_log_level: number = LogLevel.LOG_LEVEL_ERROR; //tslint:disable-line variable-name
 
 	private get _plugin(): Promise<CadesBrowserPlugin> {
 		if (!this._pluginPromise) {
