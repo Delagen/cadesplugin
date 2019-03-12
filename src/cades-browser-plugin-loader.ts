@@ -27,7 +27,11 @@ export class CadesBrowserPluginLoader implements Promise<CadesBrowserPlugin> {
 		return this._plugin.then(onFulfilled, onRejected);
 	}
 
-	catch<TC = never>(onRejected?: ((reason: any) => (PromiseLike<TC> | TC)) | null): Promise<any | TC> {
+	catch<TC = never>(onRejected?: ((reason: any) => (PromiseLike<TC> | TC)) | null): Promise<CadesBrowserPlugin | TC> {
 		return this._plugin.catch(onRejected);
+	}
+
+	finally(onFinally?: (() => void) | undefined | null): Promise<CadesBrowserPlugin> {
+		return this._plugin.finally(onFinally);
 	}
 }
