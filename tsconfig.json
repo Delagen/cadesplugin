@@ -9,7 +9,7 @@
 		"moduleResolution": "node",
 		"lib": [
 			"dom",
-			"es2017"
+			"esnext"
 		],
 		"declaration": true,
 		"downlevelIteration": true,
