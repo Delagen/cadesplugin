@@ -2,5 +2,4 @@
 *.html
 *.ts
 !*.d.ts
-*.js.map
 *config.js*
