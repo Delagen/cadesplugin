@@ -14,10 +14,6 @@
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"
 	},
-	"dependencies": {
-		"core-js": "~2.6.2",
-		"url-search-params-polyfill": "~5.0.0"
-	},
 	"keywords": [
 		"cadesplugin",
 		"cadesplugin-api",
@@ -31,11 +27,16 @@
 		"Электронная подпись",
 		"Электронная цифровая подпись"
 	],
+	"dependencies": {
+		"core-js": "~3.1.4",
+		"url-search-params-polyfill": "~7.0.0"
+	},
 	"devDependencies": {
-		"ts-loader": "~5.3.3",
-		"typescript": "~3.2.2",
-		"webpack": "~4.28.4",
-		"webpack-cli": "~3.2.1",
-		"webpack-dev-server": "~3.1.14"
+		"ts-loader": "~6.0.4",
+		"tslib": "~1.10.0",
+		"typescript": "~3.5.3",
+		"webpack": "~4.35.3",
+		"webpack-cli": "~3.3.6",
+		"webpack-dev-server": "~3.7.2"
 	}
 }

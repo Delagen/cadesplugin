@@ -18,7 +18,7 @@
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
-		"importHelpers": false,
+		"importHelpers": true,
 		"inlineSources": true,
 		"emitBOM": false,
 		"newLine": "lf",
