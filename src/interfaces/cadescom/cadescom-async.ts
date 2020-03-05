@@ -4,7 +4,7 @@ import {
 	CAPICOM_HASH_ALGORITHM,
 	ICertificateAsync
 } from "../capicom";
-import { Async } from "../util";
+import {Async} from "../util";
 import {
 	IAbout,
 	ICadesSignedData,

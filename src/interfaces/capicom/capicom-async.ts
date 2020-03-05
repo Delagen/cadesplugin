@@ -1,4 +1,4 @@
-import { Async } from "../util";
+import {Async} from "../util";
 import {
 	ICertificate,
 	ICertificates,

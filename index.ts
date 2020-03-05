@@ -1,5 +1,5 @@
 import * as exported from "./export";
-import { CadesBrowserPluginLoader } from "./src";
+import {CadesBrowserPluginLoader} from "./src";
 
 export * from "./src";
 

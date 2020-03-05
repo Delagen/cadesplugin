@@ -1,11 +1,11 @@
-import { BrowserDetector } from "./browser-detector";
+import {BrowserDetector} from "./browser-detector";
 import {
 	ICADESPluginAsync,
 	ICADESPluginAsyncObject,
 	ICADESPluginSync,
 	ICADESPluginSyncObject,
-	IObjectNamesMapSync,
-	IObjectNamesMapAsync
+	IObjectNamesMapAsync,
+	IObjectNamesMapSync
 } from "./interfaces";
 import {
 	CadesExtension,

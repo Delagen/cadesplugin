@@ -1,6 +1,6 @@
-import { BrowserDetector } from "../browser-detector";
-import { ICADESPluginAsyncObject } from "../interfaces";
-import { loadScript } from "../util";
+import {BrowserDetector} from "../browser-detector";
+import {ICADESPluginAsyncObject} from "../interfaces";
+import {loadScript} from "../util";
 
 interface ICadesExtension {
 	CreatePluginObject(): Promise<ICADESPluginAsyncObject>;

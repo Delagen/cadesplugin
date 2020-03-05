@@ -32,11 +32,11 @@
 		"url-search-params-polyfill": "~7.0.0"
 	},
 	"devDependencies": {
-		"ts-loader": "~6.1.0",
-		"tslib": "~1.10.0",
-		"typescript": "~3.6.3",
-		"webpack": "~4.40.2",
-		"webpack-cli": "~3.3.9",
-		"webpack-dev-server": "~3.8.1"
+		"ts-loader": "~6.2.1",
+		"tslib": "~1.11.1",
+		"typescript": "~3.8.3",
+		"webpack": "~5.0.0-beta.14",
+		"webpack-cli": "~4.0.0-beta.8",
+		"webpack-dev-server": "~3.10.3"
 	}
 }

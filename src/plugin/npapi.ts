@@ -1,5 +1,5 @@
-import { BrowserDetector } from "../browser-detector";
-import { ICADESPluginSyncObject } from "../interfaces";
+import {BrowserDetector} from "../browser-detector";
+import {ICADESPluginSyncObject} from "../interfaces";
 
 declare const ActiveXObject: new (name: string) => any;
 declare const call_ru_cryptopro_npcades_10_native_bridge: (method: string, args: [string]) => any;

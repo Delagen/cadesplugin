@@ -1,5 +1,5 @@
-import { CadesBrowserPlugin } from "./cades-browser-plugin";
-import { LogLevel } from "./interfaces";
+import {CadesBrowserPlugin} from "./cades-browser-plugin";
+import {LogLevel} from "./interfaces";
 
 export class CadesBrowserPluginLoader implements Promise<CadesBrowserPlugin> {
 	private _pluginPromise?: Promise<CadesBrowserPlugin>;
