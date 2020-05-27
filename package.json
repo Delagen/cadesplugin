@@ -1,6 +1,6 @@
 {
 	"name": "@delagen/cadesplugin",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "",
 	"main": "./index.js",
 	"scripts": {
@@ -32,11 +32,11 @@
 		"url-search-params-polyfill": "~8.1.0"
 	},
 	"devDependencies": {
-		"ts-loader": "~7.0.2",
-		"tslib": "~1.11.1",
-		"typescript": "~3.8.3",
-		"webpack": "~5.0.0-beta.15",
+		"ts-loader": "~7.0.5",
+		"tslib": "~2.0.0",
+		"typescript": "~3.9.3",
+		"webpack": "~5.0.0-beta.16",
 		"webpack-cli": "~4.0.0-beta.8",
-		"webpack-dev-server": "~3.10.3"
+		"webpack-dev-server": "~3.11.0"
 	}
 }
