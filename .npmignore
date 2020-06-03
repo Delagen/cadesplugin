@@ -1,5 +1,6 @@
 .*
 *.html
 *.ts
-!*.d.ts
-*config.js*
+tsconfig.json
+!/build/*
+

@@ -1,15 +1,11 @@
-"use strict";
 const path = require("path");
 
-module.exports = {
+const baseConfig = {
 	cache: false,
 	mode: "development",
 	devtool: "source-map",
-	entry: {
-		browser: "./browser.ts",
-		"browser.polyfill": "./browser.polyfill.ts"
-	},
 	output: {
+		ecmaVersion: 5,
 		filename: "[name].js",
 		path: path.resolve(__dirname, "build"),
 		publicPath: "/",
@@ -41,3 +37,31 @@ module.exports = {
 		overlay: true
 	}
 };
+
+module.exports = [
+	{
+		...baseConfig,
+		entry: "./index.ts",
+		output: {
+			...baseConfig.output,
+			filename: "index.js",
+			library: {type: "commonjs-module"}
+		}
+	},
+	{
+		...baseConfig,
+		entry: "./browser.ts",
+		output: {
+			...baseConfig.output,
+			filename: "browser.js"
+		}
+	},
+	{
+		...baseConfig,
+		entry: "./browser.polyfill.ts",
+		output: {
+			...baseConfig.output,
+			filename: "browser.polyfill.js"
+		}
+	}
+];
