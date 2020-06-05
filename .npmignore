@@ -1,6 +1,7 @@
 .*
 *.html
+*.js
 *.ts
 tsconfig.json
-!/build/*
+!/build/**
 
