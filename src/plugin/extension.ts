@@ -15,7 +15,7 @@ declare const cpcsp_chrome_nmcades: ICadesExtension | undefined;
 export class CadesExtension {
 	async init(): Promise<ICADESPluginAsyncObject> {
 		if (BrowserDetector.isEdge || BrowserDetector.isFirefox) {
-			await new Promise((resolve, reject) => {
+			await new Promise<void>((resolve, reject) => {
 				const pluginLoadedHandler: (event: MessageEvent) => Promise<void> = async (event) => {
 					if (typeof (event.data) !== "string" || !event.data.match("cadesplugin_loaded")) {
 						return;
