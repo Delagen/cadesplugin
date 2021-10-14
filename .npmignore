@@ -2,6 +2,7 @@
 *.html
 *.js
 *.ts
+/test
 tsconfig.json
 !/build/**
 

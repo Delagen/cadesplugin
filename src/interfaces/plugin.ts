@@ -5,6 +5,8 @@ import {
 	ICadesSignedDataAsync,
 	ICPAttribute,
 	ICPAttributeAsync,
+	ICPEnvelopedData,
+	ICPEnvelopedDataAsync,
 	ICPHashedData,
 	ICPHashedDataAsync,
 	ICPSigner,
@@ -14,13 +16,11 @@ import {
 	ISignedXML,
 	ISignedXMLAsync
 } from "./cadescom";
-import {
-	IStore,
-	IStoreAsync
-} from "./capicom";
+import {IStore, IStoreAsync} from "./capicom";
 
 export interface IObjectNamesMapSync {
 	"CAdESCOM.Store": IStore;
+	"CAdESCOM.CPEnvelopedData": ICPEnvelopedData;
 	"CAdESCOM.CPSigner": ICPSigner;
 	"CAdESCOM.About": IAbout;
 	"CAdESCOM.SignedXML": ISignedXML;
@@ -32,6 +32,7 @@ export interface IObjectNamesMapSync {
 
 export interface IObjectNamesMapAsync {
 	"CAdESCOM.Store": IStoreAsync;
+	"CAdESCOM.CPEnvelopedData": ICPEnvelopedDataAsync;
 	"CAdESCOM.CPSigner": ICPSignerAsync;
 	"CAdESCOM.About": IAboutAsync;
 	"CAdESCOM.SignedXML": ISignedXMLAsync;
