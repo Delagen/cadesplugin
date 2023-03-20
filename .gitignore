@@ -29,10 +29,10 @@ node_modules/
 # IDEA Config
 .*
 !.*ignore
+!.*config
 
 # Compiled files
 *.js
 !webpack.config.*
 *.js.map
 *.d.ts
-

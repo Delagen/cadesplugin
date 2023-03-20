@@ -1,11 +1,20 @@
 import {
+    ICPCertificate,
+    ICPCertificateAsync,
+    ICPCertificates,
+    ICPCertificatesAsync,
     ICPHashedData,
-    ICPHashedDataAsync, ICPRecipients,
+    ICPHashedDataAsync,
+    ICPRecipients,
     ICPRecipientsAsync,
     ICPSigner,
     ICPSignerAsync,
+    ICPStore,
+    ICPStoreAsync,
+    IPrivateKey,
+    IPrivateKeyAsync,
     IVersion,
-    IVersionAsync
+    IVersionAsync,
 } from "./cadescom";
 import {
     ICertificate,
@@ -17,21 +26,28 @@ import {
     IOID,
     IOIDAsync,
     IPublicKey,
-    IPublicKeyAsync
+    IPublicKeyAsync,
+    IStore,
+    IStoreAsync,
 } from "./capicom";
 
 //note: extracts the type if wrapped by a Promise
 export type Unpacked<T> = T extends Promise<infer U> ? U :
-    T extends ICertificate ? ICertificateAsync :
-        T extends ICertificates ? ICertificatesAsync :
-            T extends ICPSigner ? ICPSignerAsync :
-                T extends ICPHashedData ? ICPHashedDataAsync :
-                    T extends ICPRecipients ? ICPRecipientsAsync :
-                        T extends IVersion ? IVersionAsync :
-                            T extends IOID ? IOIDAsync :
-                                T extends IEncodedData ? IEncodedDataAsync :
-                                    T extends IPublicKey ? IPublicKeyAsync :
-                                        T;
+    T extends ICPStore<infer R> ? ICPStoreAsync<R> :
+        T extends IStore<infer R> ? IStoreAsync<R> :
+            T extends ICPCertificate ? ICPCertificateAsync :
+                T extends ICertificate ? ICertificateAsync :
+                    T extends ICPCertificates<infer R> ? ICPCertificatesAsync<R> :
+                        T extends ICertificates<infer R> ? ICertificatesAsync<R> :
+                            T extends ICPSigner ? ICPSignerAsync :
+                                T extends ICPHashedData ? ICPHashedDataAsync :
+                                    T extends ICPRecipients ? ICPRecipientsAsync :
+                                        T extends IVersion ? IVersionAsync :
+                                            T extends IOID ? IOIDAsync :
+                                                T extends IEncodedData ? IEncodedDataAsync :
+                                                    T extends IPublicKey ? IPublicKeyAsync :
+                                                        T extends IPrivateKey ? IPrivateKeyAsync :
+                                                            T;
 
 export type PromisifiedFunction<T extends Function> = //tslint:disable-line ban-types
     T extends (...args: infer A) => infer U ? (...args: { [K in keyof A]: Unpacked<A[K]> }) => Promise<Unpacked<U>> :

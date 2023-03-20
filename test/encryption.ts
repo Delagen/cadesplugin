@@ -27,6 +27,11 @@ import {
     }
     const oCertSignature = await signatureCertificates.Item(1);
 
+    if(await oCertSignature.HasPrivateKey()){
+        const oCertPrivateKey=await oCertSignature.PrivateKey;
+        await oCertPrivateKey.propset_CachePin(true)
+    }
+
     oCertificatesObj = await oStore.Certificates;
     const encryptCertificates = await oCertificatesObj.Find(CAPICOM_CERTIFICATE_FIND_TYPE.CAPICOM_CERTIFICATE_FIND_SUBJECT_NAME, certEncryptSubjectName);
     count = await encryptCertificates.Count;

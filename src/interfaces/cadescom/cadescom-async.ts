@@ -2,29 +2,41 @@ import {
     CAPICOM_CERTIFICATE_INCLUDE_OPTION,
     CAPICOM_ENCODING_TYPE,
     CAPICOM_HASH_ALGORITHM,
-    ICertificateAsync
+    ICertificateAsync,
 } from "../capicom";
-import {Async} from "../util";
+import { Async } from "../util";
 import {
     IAbout,
     ICadesSignedData,
     ICPAttribute,
+    ICPCertificate,
+    ICPCertificates,
     ICPEnvelopedData,
     ICPHashedData,
     ICPRecipients,
     ICPSigner,
     ICPSigners,
+    ICPStore,
+    IPrivateKey,
     IRawSignature,
     ISignedXML,
-    IVersion
+    IVersion,
 } from "./cadescom";
 import {
     CADESCOM_ATTRIBUTE,
     CADESCOM_CONTENT_ENCODING_TYPE,
     CADESCOM_DISPLAY_DATA,
     CADESCOM_ENCRYPTION_ALGORITHM,
-    CADESCOM_XML_SIGNATURE_TYPE
+    CADESCOM_XML_SIGNATURE_TYPE,
 } from "./cadescom-enums";
+
+
+export interface IPrivateKeyAsync extends Async<IPrivateKey> {
+    propset_CachePin(isCached: boolean): Promise<void>;
+}
+
+export interface ICPCertificateAsync extends Async<ICPCertificate> {
+}
 
 export interface ICPRecipientsAsync extends Async<ICPRecipients> {
 }
@@ -89,4 +101,10 @@ export interface ICPAttributeAsync extends Async<ICPAttribute> {
 }
 
 export interface IRawSignatureAsync extends Async<IRawSignature> {
+}
+
+export interface ICPCertificatesAsync<T = ICPCertificate> extends Async<ICPCertificates<T>> {
+}
+
+export interface ICPStoreAsync<T = ICPCertificates> extends Async<ICPStore<T>> {
 }

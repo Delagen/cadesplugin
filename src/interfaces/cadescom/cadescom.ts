@@ -5,7 +5,8 @@ import {
     ICertificate,
     ICertificates,
     IOID,
-    ISigners
+    ISigners,
+    IStore,
 } from "../capicom";
 import {
     CADESCOM_ATTRIBUTE,
@@ -13,8 +14,19 @@ import {
     CADESCOM_CONTENT_ENCODING_TYPE,
     CADESCOM_DISPLAY_DATA,
     CADESCOM_ENCRYPTION_ALGORITHM,
-    CADESCOM_XML_SIGNATURE_TYPE
+    CADESCOM_XML_SIGNATURE_TYPE,
 } from "./cadescom-enums";
+
+//to make interface differ
+declare const privateKeySymbol: unique symbol;
+
+export interface IPrivateKey {
+    [privateKeySymbol]: unknown;
+}
+
+export interface ICPCertificate extends ICertificate {
+    readonly PrivateKey: IPrivateKey;
+}
 
 export interface ICPRecipients {
     readonly Count: number;
@@ -58,11 +70,17 @@ export interface ICadesSignedData {
 
     EnhanceCades(cadesType?: CADESCOM_CADES_TYPE, TSAAddress?: string, encodingType?: CAPICOM_ENCODING_TYPE): string;
 
-    SignCades(signer?: ICPSigner, CadesType?: CADESCOM_CADES_TYPE, bDetached?: boolean, EncodingType?: CAPICOM_ENCODING_TYPE): string;
+    SignCades(
+        signer?: ICPSigner, CadesType?: CADESCOM_CADES_TYPE, bDetached?: boolean,
+        EncodingType?: CAPICOM_ENCODING_TYPE,
+    ): string;
 
     VerifyCades(SignedMessage: string, CadesType?: CADESCOM_CADES_TYPE, bDetached?: boolean): void;
 
-    SignHash(hashedData: ICPHashedData, signer?: ICPSigner, CadesType?: CADESCOM_CADES_TYPE, encodingType?: CAPICOM_ENCODING_TYPE): string;
+    SignHash(
+        hashedData: ICPHashedData, signer?: ICPSigner, CadesType?: CADESCOM_CADES_TYPE,
+        encodingType?: CAPICOM_ENCODING_TYPE,
+    ): string;
 
     VerifyHash(hashedData: ICPHashedData, message: string, CadesType?: CADESCOM_CADES_TYPE): boolean;
 }
@@ -131,4 +149,11 @@ export interface IRawSignature {
     SignHash(hash: ICPHashedData, certificate?: string): string;
 
     VerifyHash(hash: ICPHashedData, certificate: ICertificate, signature: string): void;
+}
+
+
+export interface ICPCertificates<T = ICPCertificate> extends ICertificates<T> {
+}
+
+export interface ICPStore<T = ICPCertificates> extends IStore<T> {
 }

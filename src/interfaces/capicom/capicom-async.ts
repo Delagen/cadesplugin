@@ -1,20 +1,20 @@
-import {Async} from "../util";
+import { Async } from "../util";
 import {
-	ICertificate,
-	ICertificates,
-	IEncodedData,
-	IOID,
-	IPublicKey,
-	IStore
+    ICertificate,
+    ICertificates,
+    IEncodedData,
+    IOID,
+    IPublicKey,
+    IStore,
 } from "./capicom";
 
 export interface ICertificateAsync extends Async<ICertificate> {
 }
 
-export interface ICertificatesAsync extends Async<ICertificates> {
+export interface ICertificatesAsync<T = ICertificate> extends Async<ICertificates<T>> {
 }
 
-export interface IStoreAsync extends Async<IStore> {
+export interface IStoreAsync<T = ICertificate> extends Async<IStore<T>> {
 }
 
 export interface IEncodedDataAsync extends Async<IEncodedData> {
