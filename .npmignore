@@ -1,9 +1,9 @@
 .*
 *.html
 *.js
+*.json
 *.ts
 /src
 /test
-tsconfig.json
 !/build/**
 /build/test
